@@ -18,8 +18,6 @@ public class CalculatorServer {
             }
 
             CalculatorImpl calc = new CalculatorImpl();
-
-            // Naming.rebind("CalcService", calc);
             Naming.rebind("rmi://localhost:2000/CalcService", calc);
 
             System.out.println("Calculator Server is Ready...");

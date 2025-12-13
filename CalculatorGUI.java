@@ -27,7 +27,7 @@ public class CalculatorGUI extends JFrame {
         setLayout(new BorderLayout());
         getContentPane().setBackground(new Color(240, 240, 245));
 
-        // * Connect to Server
+        // * call Server Func
         connectToServer();
 
         // * border
@@ -58,7 +58,7 @@ public class CalculatorGUI extends JFrame {
         mainPanel.add(inputPanel);
         mainPanel.add(Box.createRigidArea(new Dimension(0, 20)));
 
-        // * operation Buttons
+        // * operations Buttons
         JPanel buttonPanel = new JPanel(new GridLayout(1, 4, 15, 0));
         buttonPanel.setOpaque(false);
 
@@ -105,6 +105,7 @@ public class CalculatorGUI extends JFrame {
         return button;
     }
 
+    // * connect to server
     private void connectToServer() {
         try {
             calcStub = (Calculator) Naming.lookup("rmi://localhost:2000/CalcService");
@@ -116,15 +117,16 @@ public class CalculatorGUI extends JFrame {
         }
     }
 
-    private void calculate(String op) {
+    private void calculate(String operation) {
         if (calcStub == null) {
-            // Try reconnecting
+            // ! Try reconnecting
             connectToServer();
             if (calcStub == null)
                 return;
         }
 
         try {
+            // * numbers empty exception
             if (num1Field.getText().trim().isEmpty() || num2Field.getText().trim().isEmpty()) {
                 JOptionPane.showMessageDialog(this, "Please enter both numbers.", "Input Error",
                         JOptionPane.WARNING_MESSAGE);
@@ -136,7 +138,7 @@ public class CalculatorGUI extends JFrame {
             double result = 0;
             boolean isDouble = false;
 
-            switch (op) {
+            switch (operation) {
                 case "+":
                     result = calcStub.add(n1, n2);
                     break;
