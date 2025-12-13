@@ -63,5 +63,5 @@ Contributions are welcome! Feel free to fork this repo, open issues, or submit p
 
 
 
-Co-authored-by: Mohamed Ismail <your-email@example.com>
-Co-authored-by: Collaborator Name <collaborator-email@example.com>
+Co-authored-by: Mohamed Ismail
+Co-authored-by: Saif Yehia Mosaad 
